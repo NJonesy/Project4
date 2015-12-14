@@ -1,12 +1,15 @@
 angular
-  .module('players')
-  .controller('playersController', PlayerController)
+  .module('GetAGame')
+  .controller('PlayersController', PlayersController)
 
-PlayerController.$inject = ['Player', 'TokenService']
-function PlayerController(Player, TokenService) {
+PlayersController.$inject = ['Player', 'TokenService']
+function PlayersController(Player, TokenService) {
   var self = this;
 
-  self.all = [];
+  self.all = Player.query(function(data) {
+    return data.players;
+  });
+  
   self.player = {};
 
   function handleLogin(res) {
@@ -23,6 +26,7 @@ function PlayerController(Player, TokenService) {
   }
 
   self.login = function() {
+    console.log("click");
     Player.login(self.player, handleLogin);
   }  
 

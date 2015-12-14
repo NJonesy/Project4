@@ -1,5 +1,5 @@
 angular
-  .module('players')
+  .module('GetAGame')
   .service('TokenService', TokenService);
 
 TokenService.$inject = ["$window", "jwtHelper"];

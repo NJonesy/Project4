@@ -1,5 +1,5 @@
 angular
-  .module('players')
+  .module('GetAGame')
   .factory('AuthInterceptor', AuthInterceptor);
 
   AuthInterceptor.$inject = ['API', 'TokenService'];

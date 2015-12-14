@@ -4,37 +4,24 @@ var Game = require('../models/game');
 function playersIndex(req, res) {
   Player.find(function(err, players){
     if (err) return res.status(404).json({ message: 'Something went wrong. '});
-    res.status(200).json({ players: players });
+    res.status(200).json(players);
   });
 }
 
 function playersShow(req, res) {
   Player.findById(req.params.id, function(err, player){
     if (err) return res.status(404).json({ message: 'Something went wrong. '});
-    res.status(200).json({ player: player });
+    res.status(200).json(player);
   });
 }
 
 function playersUpdate(req, res) {
   console.log(req.body)
-  Player.findByIdAndUpdate({ _id:req.params.id }, 
-  {
-    username: req.body.username,
-    fullname: req.body.fullname,
-    image: req.body.image,
-    sport: req.body.sport,
-    description: req.body.description,
-    email: req.body.email,
-    password: req.body.password,
-    game: req.body.game
-  },
+  Player.findByIdAndUpdate({ _id:req.params.id }, req.body,
   { new: true },
   function(err, player) {
     if(err) return res.render('err', {message: 'Could not update player b/c:' + err});
-    player.save(function(err) {
-      if (err) return res.status(500).json({ message: "Something went wrong!" });
-      return res.status(201).json({ message: 'Player successfully updated.', player: player })
-    });
+    return res.status(201).json(player);
   });
 }
 

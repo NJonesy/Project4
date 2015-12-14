@@ -25,9 +25,8 @@ function register(req, res, next) {
 };
 
 function login(req, res, next) {
-  Player.findOne({
-    "local.email": req.body.email
-  }, function(err, player) {
+  Player.findOne({ "email": req.body.email }, function(err, player) {
+    console.log('banana')
     if (err) return res.status(500).json(err);
     if (!player) return res.status(403).json({ message: 'No player found.' });
     if (!player.validPassword(req.body.password)) return res.status(403).json({ message: 'Authentication failed.' });

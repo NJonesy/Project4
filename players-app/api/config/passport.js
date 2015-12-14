@@ -10,7 +10,7 @@ module.exports = function(passport) {
   }, function(req, email, password, done) {
 
       // Find a player with this email
-    Player.findOne({ 'local.email' : email }, function(err, player) {
+    Player.findOne({ 'email' : email }, function(err, player) {
         // Error found
       if (err) return done(err, false, { message: "Something went wrong." });
 
@@ -18,13 +18,13 @@ module.exports = function(passport) {
       if (player) return done(null, false, { message: "Please choose another email." });
       
       var newPlayer = new Player();
-      newPlayer.local.email = email;
-      newPlayer.local.username = req.body.username;
-      newPlayer.local.fullname = req.body.fullname;
-      newPlayer.local.image = req.body.image;
-      newPlayer.local.description = req.body.description;
-      newPlayer.local.password = Player.encrypt(password);
-      newPlayer.local.sport = req.body.sport;
+      newPlayer.email = email;
+      newPlayer.username = req.body.username;
+      newPlayer.fullname = req.body.fullname;
+      newPlayer.image = req.body.image;
+      newPlayer.biography = req.body.biography;
+      newPlayer.password = Player.encrypt(password);
+      newPlayer.sport = req.body.sport;
       newPlayer.save(function(err, player) {
 
           // Error found

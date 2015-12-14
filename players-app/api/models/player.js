@@ -6,11 +6,10 @@ var playerSchema = new mongoose.Schema({
     username: String,
     fullname: String,
     image: String,
-    sport: String,
-    description: String,
+    biography: String,
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
-    game: [Game.schema]
+    games: [{ type: mongoose.Schema.ObjectId, ref: 'Game' }]
 });
 
 playerSchema.statics.encrypt = function(password) {
@@ -18,7 +17,7 @@ playerSchema.statics.encrypt = function(password) {
 };
 
 playerSchema.methods.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.local.password);
+  return bcrypt.compareSync(password, this.password);
 }
 
 module.exports = mongoose.model("Player", playerSchema);

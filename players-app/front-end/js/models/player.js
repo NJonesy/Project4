@@ -1,5 +1,5 @@
 angular
-  .module('players')
+  .module('GetAGame')
   .factory('Player', Player);
 
 Player.$inject = ['$resource', 'API'];
@@ -9,7 +9,7 @@ function Player($resource, API) {
     'login': { method: "POST", url: API + '/login'},
     'register': { method: "POST", url: API + '/register'},
     'update': { method:'PATCH' },
-    'query': { method: "GET", isArray: false }
+    'query': { method: "GET", isArray: true }
   });
 
   return Player; 
