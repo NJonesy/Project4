@@ -4,10 +4,8 @@ angular
 
 Game.$inject = ['$resource', 'API'];
 function Game($resource, API) {
-  return $resource(API + '/games/:id', null, {
-    'create_game': { method: "POST", url: API + '/games'},
-    'update': { method:'PATCH' },
-    'query': { method: "GET", isArray: false }
+  return $resource(API + '/games/:id', { id: '@_id' }, {
+    'update': { method:'PATCH' }
   });
   return Game; 
 }

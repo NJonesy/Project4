@@ -7,19 +7,13 @@ function GamesController(Game) {
 
     var self = this;
 
-    self.all = [];
-    self.newGame = {};
-
+    this.all = Game.query();
+    this.newGame = {};
 
     self.addGame = function() {
-        self.all.push(self.newGame);
+      Game.save(self.newGame, function(newGame) {
+        self.all.push(newGame);
         self.newGame = {};
-      };
-
-
-    // self.getGames = function() {
-    //   self.all = Player.query(function(data) {
-    //     return data.players.game;
-    //   });
-    // }
+      })
+    };
 }

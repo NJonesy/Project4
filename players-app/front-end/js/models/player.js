@@ -8,8 +8,7 @@ function Player($resource, API) {
   return $resource(API + '/players/:id', null, {
     'login': { method: "POST", url: API + '/login'},
     'register': { method: "POST", url: API + '/register'},
-    'update': { method:'PATCH' },
-    'query': { method: "GET", isArray: true }
+    'update': { method:'PATCH' }
   });
 
   return Player; 
