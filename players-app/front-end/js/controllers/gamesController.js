@@ -12,9 +12,9 @@ function GamesController(Game, uiGmapGoogleMapApi) {
   this.place = {};
 
   self.addGame = function() {
-    Game.save(self.newGame, self.place, function(newGame) {
-      self.all.push(self.newGame, self.place);
-      console.log(self.newGame, self.place);
+    Game.save(self.newGame, function(newGame) {
+      self.all.push(newGame);
+      console.log(newGame);
       self.newGame = {};
     })
   };
@@ -31,7 +31,7 @@ function GamesController(Game, uiGmapGoogleMapApi) {
       zoom: 14
     });
 
-    var input = document.getElementById('place');
+    var input = document.getElementById('google-place');
 
     var autocomplete = new maps.places.Autocomplete(input);
 
@@ -42,11 +42,9 @@ function GamesController(Game, uiGmapGoogleMapApi) {
     maps.event.addListener(autocomplete, 'place_changed', function() {
 
       self.place = autocomplete.getPlace();
-      console.log(self.place);
       
-      self.newGame.placeId = place.id;
-      console.log(self.newGame.placeId)
-      self.newGame.placeName = place.name;
+      self.newGame.placeId = self.place.id;
+      self.newGame.placeName = self.place.name;
 
       self.newGame.lat = self.place.geometry.location.lat();
       self.newGame.lng = self.place.geometry.location.lng();
