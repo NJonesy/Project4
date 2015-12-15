@@ -1,6 +1,7 @@
 angular
-  .module('GetAGame', ['angular-jwt', 'ngResource', 'ui.router'])
+  .module('GetAGame', ['angular-jwt', 'ngResource', 'ui.router', 'uiGmapgoogle-maps'])
   .constant('API', 'http://localhost:3000/api')
+  .config(GoogleMaps)
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
   })
@@ -37,3 +38,18 @@ angular
     
     $urlRouterProvider.otherwise("/");
   }
+
+
+  Interceptors.$inject = ['$httpProvider'];
+  function Interceptors($httpProvider){
+    $httpProvider.interceptors.push('AuthInterceptor');
+  }
+
+  GoogleMaps.$inject = ['uiGmapGoogleMapApiProvider'];
+  function GoogleMaps(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyCQSLJkgbNdmB-9dE1NytVPAWS2vEMIQmE',
+      v: '3.20',
+      libraries: 'places'
+    });
+  };
