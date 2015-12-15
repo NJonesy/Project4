@@ -1,7 +1,7 @@
 angular
   .module('GetAGame', ['angular-jwt', 'ngResource', 'ui.router', 'uiGmapgoogle-maps'])
   .constant('API', 'http://localhost:3000/api')
-  .config(GoogleMaps)
+  .config(GoogleMaps) 
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
   })

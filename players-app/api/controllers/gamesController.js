@@ -16,9 +16,12 @@ function gamesShow(req, res) {
   });
 }
 
+// ).populate('creator').exec(
+
 // New
 function gamesCreate(req, res) {
   var game = new Game(req.body);
+  // game.creator = req.user.id;
   game.save(function(err){
     if(err) return res.status(500).json({message: 'Could not save game because ' + err});
     return res.status(200).json(game);
