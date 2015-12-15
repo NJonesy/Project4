@@ -1,30 +1,58 @@
 <div ng-controller='GamesController as games'>
   <h3>Create A Game</h3>
-  <form ng-submit='games.addGame()'>
-    <label for="sport">Sport</label>
-    <input type="text" name="sport" placeholder= "Sport" ng-model='games.newGame.sport'>
-
-    <label for="date">Date</label>
-    <input type="date" name="date" placeholder= "Date" ng-model='games.newGame.date'>
-
-    <label for="start_time">Start time</label>
-    <input type="text" name="start_time" placeholder="Start time" ng-model='games.newGame.start_time'>
-
-    <label for="end_time">End time</label>
-    <input type="text" name="end-time" placeholder= "End Time" ng-model='games.newGame.end_time'>
-
-    <label for="number_of_players">Number of players</label>
-    <input type="text" name="number_of_players" placeholder="Number of players" ng-model='games.newGame.number_of_players'>
-
-    <label for="comments">Comments</label>
-    <input type="text" name="comments" placeholder= "Comments" ng-model='games.newGame.comments'>
-
-    <label for="google-place">Location</label>
-    <input id="google-place" type="text" name="place" placeholder="Place" ng-model='games.newGame.place'>
-
-    <input type="submit" value="Access">
-  </form>
-</div>  
+  
+  <form class="form-horizontal" ng-submit='games.addGame()'>
+    <fieldset>
+    
+    <div class="form-group">
+        <label for="sport" class="col-lg-2 control-label">Sport</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="sport" placeholder= "Sport" ng-model='games.newGame.sport'>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="date" class="col-lg-2 control-label">Date</label>
+      <div class="col-sm-6">
+        <input type="date" class="form-control"  name="date" placeholder= "Date" ng-model='games.newGame.date'>
+      </div>
+      </div>  
+      <div class="form-group">
+      
+        <label for="start_time" class="col-lg-2 control-label">Start time</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="start_time" placeholder="Start time" ng-model='games.newGame.start_time'>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="end_time" class="col-lg-2 control-label">End time</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="end-time" placeholder= "End Time" ng-model='games.newGame.end_time'>
+      </div>
+      </div>
+      <div class="form-group">
+      
+        <label for="number_of_players" class="col-lg-2 control-label">Number of players</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="number_of_players" placeholder="Number of players" ng-model='games.newGame.number_of_players'>
+      </div>  
+      </div>
+      <div class="form-group">
+        <label for="comments" class="col-lg-2 control-label">Comments</label>
+      <div class="col-sm-6">  
+        <textArea type="text" rows="3" id="textArea" class="form-control" name="comments" placeholder= "Comments" ng-model='games.newGame.comments'></textarea>
+      </div>
+      </div>  
+      <div class="form-group">
+      
+        <label for="google-place" class="col-lg-2 control-label">Location</label>
+      <div class="col-sm-6">  
+        <input id="google-place" class="form-control" type="text" name="place" placeholder="Place" ng-model='games.newGame.place'>
+      </div>
+      </div>
+        <input type="submit" value="Game on!">
+    
+    </fieldset>
+</form>
 
 <div id="main-map" style="width:700px;height:700px;"></div>
 
