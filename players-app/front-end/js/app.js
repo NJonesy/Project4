@@ -1,37 +1,37 @@
 angular
   .module('GetAGame', ['angular-jwt', 'ngResource', 'ui.router'])
   .constant('API', 'http://localhost:3000/api')
-  .config(MainRouter)
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
-  });
+  })
+  .config(MainRouter);
 
   MainRouter.$inject = ["$stateProvider", "$urlRouterProvider"];
   function MainRouter($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
         url: "/",
-        templateUrl: "home.html",
+        templateUrl: "js/templates/home.html",
       })
       .state('register', {
           url: "/register",
-          templateUrl: "register.html",
+          templateUrl: "js/templates/register.html",
         })
       .state('login', {
           url: "/login",
-          templateUrl: "login.html",
+          templateUrl: "js/templates/login.html",
         })
       .state('players', {
           url: "/players",
-          templateUrl: "players.html",
+          templateUrl: "js/templates/players.html",
         })
       .state('create_game', {
           url: "/create_game",
-          templateUrl: "create_game.html",
+          templateUrl: "js/templates/create_game.html",
         })
       .state('games', {
           url: "/games",
-          templateUrl: "games.html",
+          templateUrl: "js/templates/games.html",
         });
 
     
