@@ -20,7 +20,12 @@ angular
       .state('login', {
           url: "/login",
           templateUrl: "login.html",
-        });
+        })
+      .state('players', {
+          url: "/players",
+          templateUrl: "players.html",
+        })
+
     
     $urlRouterProvider.otherwise("/");
   }
