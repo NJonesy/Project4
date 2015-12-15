@@ -1,0 +1,15 @@
+
+<div ng-controller="PlayersController as players">
+  <h3>Login</h3>
+  <form id="login" ng-submit="players.login()">
+
+
+    <label for="email">email</label>
+    <input type="text" name="email" placeholder="What is your email?" ng-model="players.player.email">
+
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="What is your password?" ng-model="players.player.password">
+
+    <input type="submit" value="Access">
+  </form>
+</div>
