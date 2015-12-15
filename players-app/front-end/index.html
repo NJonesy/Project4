@@ -18,38 +18,18 @@
 
 <body>
 
-
+  <header ng-app="players" ng-controller="PlayersController as players">
+    <nav>
+        <a ui-sref="home">Home</a>
+        <a ui-sref="register">Register</a>
+        <a ui-sref="players" ng-click="players.getPlayers()">Players</a>
+        <div><a href="#logout" ng-click="players.disappear()">Log Out</a></div>
+    </nav>
+  </header>
 
   <div ui-router>
  
  </div>
-
-  
-  <section>
-    <h3>Login</h3>
-    <form id="login" ng-submit="players.login()">
-
-
-      <label for="email">email</label>
-      <input type="text" name="email" placeholder="What is your email?" ng-model="players.player.email">
-
-      <label for="password">Password</label>
-      <input type="password" name="password" placeholder="What is your password?" ng-model="players.player.password">
-
-      <input type="submit" value="Access">
-    </form>
-  </section>
-
-  <section id="current-players">
-    <p>Here is the list of our current players:</p>
-    <ul>
-      <li ng-repeat="player in players.all">
-        {{player.players}}
-        <strong>{{player.username}}</strong> - {{player.fullname}} - <strong> - {{player.description}}</strong>
-      </li>
-    </ul>
-  </section>
-</section>
 
 <section ng-controller='GamesController as games'>
   <h3>Create A Game</h3>

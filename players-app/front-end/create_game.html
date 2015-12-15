@@ -1,0 +1,27 @@
+<div ng-controller='GamesController as games'>
+  <h3>Create A Game</h3>
+  <form ng-submit='games.addGame()'>
+    <label for="sport">Sport</label>
+    <input type="text" name="sport" placeholder= "Sport" ng-model='games.newGame.sport'>
+
+    <label for="date">Date</label>
+    <input type="date" name="date" placeholder= "Date" ng-model='games.newGame.date'>
+
+    <label for="start_time">Start time</label>
+    <input type="text" name="start_time" placeholder="Start time" ng-model='games.newGame.start_time'>
+
+    <label for="end_time">End time</label>
+    <input type="text" name="end-time" placeholder= "End Time" ng-model='games.newGame.end_time'>
+
+    <label for="number_of_players">Number of players</label>
+    <input type="text" name="number_of_players" placeholder="Number of players" ng-model='games.newGame.number_of_players'>
+
+    <label for="comments">Comments</label>
+    <input type="text" name="comments" placeholder= "Comments" ng-model='games.newGame.comments'>
+
+    <label for="place">Location</label>
+    <input type="text" name="place" placeholder= "Place" ng-model='games.newGame.place'>
+
+    <input type="submit" value="Access">
+  </form>
+</div>  
