@@ -9,12 +9,12 @@ function GamesController(Game, uiGmapGoogleMapApi) {
 
   this.all = Game.query();
   this.newGame = {};
-
+  this.place = {};
 
   self.addGame = function() {
-    Game.save(self.newGame, function(newGame) {
-      self.all.push(newGame);
-      console.log(newGame);
+    Game.save(self.newGame, self.place, function(newGame) {
+      self.all.push(self.newGame, self.place);
+      console.log(self.newGame, self.place);
       self.newGame = {};
     })
   };
@@ -41,18 +41,19 @@ function GamesController(Game, uiGmapGoogleMapApi) {
 
     maps.event.addListener(autocomplete, 'place_changed', function() {
 
-      var place = autocomplete.getPlace();
-      console.log(place);
+      self.place = autocomplete.getPlace();
+      console.log(self.place);
       
-      // self.newGame.placeId = place.id;
-      // self.newGame.placeName = place.name;
+      self.newGame.placeId = place.id;
+      console.log(self.newGame.placeId)
+      self.newGame.placeName = place.name;
 
-      // self.newGame.lat = place.geometry.location.lat();
-      // self.newGame.lng = place.geometry.location.lng();
+      self.newGame.lat = self.place.geometry.location.lat();
+      self.newGame.lng = self.place.geometry.location.lng();
 
       marker.setPlace({
-        placeId: place.place_id,
-        location: place.geometry.location
+        placeId: self.place.place_id,
+        location: self.place.geometry.location
       });
 
       marker.setVisible(true);
