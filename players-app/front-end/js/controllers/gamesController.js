@@ -43,20 +43,26 @@ function GamesController(Game, uiGmapGoogleMapApi, $scope) {
               position: new maps.LatLng(info.lat, info.lng),
               title: info.sport
           });
+
      marker.content = '<div class="infoWindowContent"><ul>' + 
      '<li>' + info.sport + '</li>' + '<li>' + info.date + 
      '</li>' + '<li>' + info.start_time + '</li>' + '<li>' + 
      info.end_time + '</li>' + '<li>' + info.number_of_players + '</li>' + '<li>' + 
      info.comment + '</li>' + '<li>' + info.placeName + '</ul></div>';
 
+     console.log(marker.content);
+
      maps.event.addListener(marker, 'click', function () {
-         infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-         infoWindow.open($scope.search_map, marker);
+      console.log('hello')
+      console.log(search_map)
+         infoWindow.setContent('<h2 class="infoWindowTitle">' + marker.title + '</h2>' + marker.content);
+         console.log(infoWindow.content)
+         infoWindow.open(search_map, marker);
      });
 
      console.log(marker);
+     self.markers.push(marker);
    }
-
 
    for (i = 0; i < self.all.length; i++) {
      createMarker(self.all[i]);

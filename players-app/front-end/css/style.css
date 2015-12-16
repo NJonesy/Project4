@@ -9,5 +9,13 @@ h1 {
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Archivo Black', sans-serif;
-}  
+} 
+
+.infoWindowContent {
+  color: red;
+}
+
+.infoWindowTitle {
+  color: red;
+}
 
