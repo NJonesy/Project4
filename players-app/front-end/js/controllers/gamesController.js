@@ -11,8 +11,8 @@ function GamesController(Game, uiGmapGoogleMapApi) {
   this.all = Game.query();
   this.newGame = {};
   this.place = {};
-  this.sport_name = "";
-  this.date_value = "";
+  this.sport = "";
+  
 
 
   self.addGame = function() {

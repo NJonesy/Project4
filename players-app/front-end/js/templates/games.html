@@ -4,17 +4,18 @@
   <h2>Find a game in your sport</h2>
 
     <p>Sport:</p>
-      <input type="text" ng-model="sport_name">
-    <p>Date:</p>
-      <input type="date" ng-model="game_date">   
+      <input type="text" ng-model="games.game.sport">
+<!--     <p>Date:</p>
+      <input type="date" ng-model="game_date">   --> 
 
     <div class="search_map" id="search_map" style="width:715px;height:600px;"></div>
 
     <div id="class" ng-repeat="marker in markers"></div>
 
     <ul>
-      <li ng-repeat="game in games = ( games | filter:{ sport:sport_name } | filter:{ date:date_value }">
-      <strong>{{game.sport}}</strong><strong>{{game.date}}</strong><strong>{{game.start_time}}</strong><strong>{{game.end_time}}</strong><strong>{{game.number_of_players}}</strong><strong>{{game.comment}}</strong><strong>{{game.address}}</strong>
-      </li>
+
+<!--     <li ng-repeat="x in nas = (names | filter:{prop_Name:location_name})">{{ x.prop_Desc + ', ' + x.prop_Addr + ', ' + '$' + x.prop_Price }}</li> -->
+
+      <li ng-repeat="game in games = (games | filter:{ sport:games.sport }">hello</li>
     </ul>
 </div>
