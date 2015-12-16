@@ -34,6 +34,8 @@ function GamesController(Game, uiGmapGoogleMapApi, $scope) {
      zoom: 14
    });
 
+   var infoWindow = new maps.InfoWindow();
+
    createMarker = function(info) {
 
      var marker = new maps.Marker({
@@ -41,21 +43,41 @@ function GamesController(Game, uiGmapGoogleMapApi, $scope) {
               position: new maps.LatLng(info.lat, info.lng),
               title: info.sport
           });
-     console.log(marker);
+     marker.content = '<div class="infoWindowContent"><ul>' + 
+     '<li>' + info.sport + '</li>' + '<li>' + info.date + 
+     '</li>' + '<li>' + info.start_time + '</li>' + '<li>' + 
+     info.end_time + '</li>' + '<li>' + info.number_of_players + '</li>' + '<li>' + 
+     info.comment + '</li>' + '<li>' + info.placeName + '</ul></div>';
 
-     self.markers.push(marker);
-     console.log(self.markers)
+     maps.event.addListener(marker, 'click', function () {
+         infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+         infoWindow.open($scope.search_map, marker);
+     });
+
+     console.log(marker);
    }
 
-   console.log(self.markers)
 
    for (i = 0; i < self.all.length; i++) {
      createMarker(self.all[i]);
    }
 
-       console.log(self.all.length)
+   $scope.openInfoWindow = function (e, selectedMarker) {
+          e.preventDefault();
+          maps.event.trigger(selectedMarker, 'click');
+          console.log("click");
+      }
 
- });
+  $scope.$watch('nas', function (newValue, oldValue) {
+      for (jdx in self.markers) {
+          self.markers[jdx].setMap(null);
+      }
+      self.markers = [];
+      for (idx in $scope.nas) {
+        createMarker($scope.nas[idx]);
+      }
+  }, true);
+});
 
  uiGmapGoogleMapApi.then(function(maps) {
 
@@ -98,16 +120,6 @@ function GamesController(Game, uiGmapGoogleMapApi, $scope) {
    });
  })
 
- $scope.$watch('nas', function (newValue, oldValue) {
-     for (jdx in self.markers) {
-         self.markers[jdx].setMap(null);
-     }
-     self.markers = [];
-     for (idx in $scope.nas) {
-       createMarker($scope.nas[idx]);
-     }
- }, true);
- 
 };
 
 
