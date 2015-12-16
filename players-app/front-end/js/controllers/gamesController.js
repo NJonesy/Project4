@@ -5,6 +5,7 @@ angular
 GamesController.$inject = ['Game', 'uiGmapGoogleMapApi'];
 function GamesController(Game, uiGmapGoogleMapApi) {
 
+
   var self = this;
 
   this.all = Game.query();
@@ -21,6 +22,20 @@ function GamesController(Game, uiGmapGoogleMapApi) {
       self.newGame = {};
     })
   };
+
+  uiGmapGoogleMapApi.then(function(maps) {
+
+    var search_map = new maps.Map(
+      document.getElementById('search_map'),
+      {
+        center: {
+          lat: 51.5081,
+          lng: -0.1000
+      },
+      zoom: 14
+    });
+  });
+
 
   uiGmapGoogleMapApi.then(function(maps) {
 
