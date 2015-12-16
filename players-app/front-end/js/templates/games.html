@@ -5,17 +5,21 @@
 
   <p>Sport:</p>
 
+      <input type="text" placeholder="sport" ng-model="games.sportSearch">
+      <input type="text" placeholder="number of players" ng-model="games.numberSearch">
+  </br>
+      <div class="search_map" id="search_map" style="width:715px;height:600px;"></div>
 
-  <div class="search_map" id="search_map" style="width:715px;height:600px;"></div>
+      <div id="class" ng-repeat="marker in games.markers"></div>
 
-  <div id="class" ng-repeat="marker in games.markers"></div>
-
-
-  <input type="text" placeholder="sport" ng-model="games.sportSearch">
-  <input type="text" placeholder="number of players" ng-model="games.numberSearch">
-
-
-    <div ng-repeat="x in nas = (games.all | filter:{sport:games.sportSearch} | filter:{number_of_players:games.numberSearch})">{{ x.sport }}</div>
-  </ul>
+  <div ng-repeat="x in nas = (games.all | filter:{sport:games.sportSearch} | filter:{number_of_players:games.numberSearch})"><strong>{{ x.sport }}</strong> | <strong>{{ x.date }}</strong> | <strong>{{ x.placeName }}</strong> | <strong>{{ x.start_time }}</strong>  | <strong>{{ x.end_time }}</strong>  | <strong>{{ x.comment }}</strong> | <strong>{{ x.number_of_players }}</strong> 
+  </div>
 
 </div>
+
+<!-- marker.content = '<div class="infoWindowContent"><ul>' + 
+'<li>' + info.sport + '</li>' + '<li>' + info.date + 
+'</li>' + '<li>' + info.start_time + '</li>' + '<li>' + 
+info.end_time + '</li>' + '<li>' + info.number_of_players + '</li>' + '<li>' + 
+info.comment + '</li>' + '<li>' + info.placeName + '</ul></div>';
+ -->
