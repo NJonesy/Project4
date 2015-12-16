@@ -13,9 +13,17 @@
     <div id="class" ng-repeat="marker in markers"></div>
 
     <ul>
+      <li ng-repeat="game in games.all">
+      {{ game }}
+      </li>
+    </ul>
+
+
+
+    
 
 <!--     <li ng-repeat="x in nas = (names | filter:{prop_Name:location_name})">{{ x.prop_Desc + ', ' + x.prop_Addr + ', ' + '$' + x.prop_Price }}</li> -->
-
-      <li ng-repeat="game in games = (games | filter:{ sport:games.sport }">hello</li>
-    </ul>
+    <!-- <ul> -->
+    <!--   <li ng-repeat="game in games = (games | filter:{ sport:games.sport }">hello</li>
+    </ul> -->
 </div>

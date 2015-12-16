@@ -2,8 +2,8 @@ angular
 .module('GetAGame')
 .controller('GamesController', GamesController);
 
-GamesController.$inject = ['Game', 'uiGmapGoogleMapApi'];
-function GamesController(Game, uiGmapGoogleMapApi) {
+GamesController.$inject = ['Game', 'uiGmapGoogleMapApi', '$scope' '$watch'];
+function GamesController(Game, uiGmapGoogleMapApi, $scope, $watch) {
 
 
   var self = this;
@@ -12,8 +12,7 @@ function GamesController(Game, uiGmapGoogleMapApi) {
   this.newGame = {};
   this.place = {};
   this.sport = "";
-  
-
+  this.markers = [];
 
   self.addGame = function() {
     Game.save(self.newGame, function(newGame) {
@@ -34,6 +33,39 @@ function GamesController(Game, uiGmapGoogleMapApi) {
       },
       zoom: 14
     });
+    
+    var createMarker = function(info) {
+
+      var marker = new maps.Marker({
+               map: search_map,
+               position: new maps.LatLng(info.lat, info.lng)
+           });
+      console.log(marker);
+
+      self.markers.push(marker);
+      console.log(self.markers)
+    }
+
+    console.log(self.markers)
+
+    for (i = 0; i < self.all.length; i++) {
+      createMarker(self.all[i]);
+    }
+
+        console.log(self.all.length)
+
+        $scope.$watch('nas',
+
+          function (newValue, oldValue) {
+              for (jdx in self.markers) {
+                  self.markers[jdx].setMap(null);
+              }
+              self.markers = [];
+              for (idx in $scope.nas) {
+                  createMarker($scope.nas[idx]);
+              }
+          }, true);
+
   });
 
 
