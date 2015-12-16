@@ -13,9 +13,9 @@
 
   <input type="text" placeholder="sport" ng-model="games.sportSearch">
   <input type="text" placeholder="number of players" ng-model="games.numberSearch">
-  <ul>
 
-    <li ng-repeat="x in nas = (games.all | filter:{sport:games.sportSearch} | filter:{number_of_players:games.numberSearch})">{{x}}</li>
+
+    <div ng-repeat="x in nas = (games.all | filter:{sport:games.sportSearch} | filter:{number_of_players:games.numberSearch})">{{ x.sport }}</div>
   </ul>
 
 </div>
