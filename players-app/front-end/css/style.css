@@ -1,12 +1,12 @@
 .angular-google-map-container { height: 400px; };
 
-.page-header {
+h1 {
   text-align: center;
 }
 
-#home-page { 
+.home { 
   background-image: url("http://www.wired.com/wp-content/uploads/blogs/design/wp-content/uploads/2012/07/072612-BAY-BRIDGE-107edit.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Archivo Black', sans-serif;
 }  
