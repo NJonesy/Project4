@@ -8,12 +8,12 @@
     <p>Date:</p>
       <input type="date" ng-model="game_date">   
 
-    <div id="search_map"></div>
+    <div class="search_map" id="search_map" style="width:715px;height:600px;"></div>
 
     <div id="class" ng-repeat="marker in markers"></div>
 
     <ul>
-      <li ng-repeat="game in games.all">
+      <li ng-repeat="game in games = ( games | filter:{ sport:sport_name } | filter:{ date:date_value }">
       <strong>{{game.sport}}</strong><strong>{{game.date}}</strong><strong>{{game.start_time}}</strong><strong>{{game.end_time}}</strong><strong>{{game.number_of_players}}</strong><strong>{{game.comment}}</strong><strong>{{game.address}}</strong>
       </li>
     </ul>

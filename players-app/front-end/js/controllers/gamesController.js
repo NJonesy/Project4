@@ -10,6 +10,9 @@ function GamesController(Game, uiGmapGoogleMapApi) {
   this.all = Game.query();
   this.newGame = {};
   this.place = {};
+  this.sport_name = "";
+  this.date_value = "";
+
 
   self.addGame = function() {
     Game.save(self.newGame, function(newGame) {
