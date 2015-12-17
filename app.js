@@ -55,6 +55,7 @@ app.use(function (err, req, res, next) {
 var routes = require('./config/routes');
 app.use("/api", routes);
 
-app.listen(process.env.PORT);
+console.log("listenning on " + config.port)
+app.listen(config.port);
 
 
