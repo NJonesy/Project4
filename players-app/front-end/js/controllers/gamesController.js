@@ -46,8 +46,7 @@ function GamesController(Game, uiGmapGoogleMapApi, $scope) {
      marker.content = '<div class="infoWindowContent"><ul>' + 
      '<li>' + info.sport + '</li>' + '<li>' + info.date + 
      '</li>' + '<li>' + info.start_time + '</li>' + '<li>' + 
-     info.end_time + '</li>' + '<li>' + info.number_of_players + '</li>' + '<li>' + 
-     info.comment + '</li>' + '<li>' + info.placeName + '</li>' + '</ul></div>';
+     info.end_time + '</li>' + '<li>' + info.number_of_players + '</li>' + '<li>' + info.placeName + '</li>' + '</ul></div>';
 
      maps.event.addListener(marker, 'click', function () {
          infoWindow.setContent('<h2 class="infoWindowTitle">' + marker.title + '</h2>' + marker.content);

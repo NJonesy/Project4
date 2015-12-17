@@ -14,6 +14,10 @@ angular
         url: "/",
         templateUrl: "js/templates/home.html",
       })
+      .state('user_type', {
+        url: "/user_type",
+        templateUrl: "js/templates/user_type.html",
+      })
       .state('register', {
           url: "/register",
           templateUrl: "js/templates/register.html",
