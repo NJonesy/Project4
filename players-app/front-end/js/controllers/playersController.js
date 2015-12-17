@@ -58,7 +58,7 @@ function PlayersController(Player, TokenService) {
     self.location.url('/#register');
   }  
 
-  self.redirectLogin = function(){
-    self.location.url('/#login');
+  self.redirectLogin = function(url){
+    self.location.url('/login');
   }  
 }
