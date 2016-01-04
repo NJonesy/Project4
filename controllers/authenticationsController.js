@@ -6,11 +6,17 @@ var jwt      = require('jsonwebtoken');
 function register(req, res, next) {
   var localStrategy = passport.authenticate('local-sign-up', function(err, player, info) {
     if (err) return res.status(500).json({ message: 'Something went wrong!' });
+    console.log(info);
     if (info) return res.status(401).json({ message: info.message });
     if (!player) return res.status(401).json({ message: 'Player already exists!' });
 
     // Player has authenticated so issue token
-    var token = jwt.sign(player, secret, { expiresIn: 60*60*24 });
+    var token = jwt.sign({
+      _id: player._id,
+      username: player.username,
+      fullname: player.fullname,
+      image: player.image
+    }, secret, { expiresIn: 60*60*24 });
     
     // Sending back the token to the front-end to store
     return res.status(200).json({
@@ -31,7 +37,12 @@ function login(req, res, next) {
     if (!player) return res.status(403).json({ message: 'No player found.' });
     if (!player.validPassword(req.body.password)) return res.status(403).json({ message: 'Authentication failed.' });
 
-    var token = jwt.sign(player, secret, { expiresIn: 60*60*24 });
+    var token = jwt.sign({
+      _id: player._id,
+      username: player.username,
+      fullname: player.fullname,
+      image: player.image
+    }, secret, { expiresIn: 60*60*24 });
     
     return res.status(200).json({
       success: true,

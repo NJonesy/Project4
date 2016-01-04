@@ -5,14 +5,14 @@ function playersIndex(req, res) {
   Player.find(function(err, players){
     if (err) return res.status(404).json({ message: 'Something went wrong. '});
     res.status(200).json(players);
-  });
+  }).select('-password');
 }
 
 function playersShow(req, res) {
   Player.findById(req.params.id, function(err, player){
     if (err) return res.status(404).json({ message: 'Something went wrong. '});
     res.status(200).json(player);
-  });
+  }).select('-password');
 }
 
 function playersUpdate(req, res) {
