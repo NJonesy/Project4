@@ -3,7 +3,7 @@ var bcrypt   = require('bcrypt-nodejs');
 
 
 var gameSchema = new mongoose.Schema({
-  // creator: { type: mongoose.Schema.ObjectId, ref: 'Player' },
+  creator: { type: mongoose.Schema.ObjectId, ref: 'Player' },
   sport: String,
   date: Date,
   start_time: String,

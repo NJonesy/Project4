@@ -3,25 +3,27 @@ var Player = require('../models/player');
 
 
 function gamesIndex(req, res) {
-  Game.find(function(err, games){
+  Game.find().populate('creator').exec(function(err, games){
+    //alternatively Game.find(function(err, games){
     if (err) return res.status(404).json({ message: 'Something went wrong. '});
     res.status(200).json(games);
   });
 }
 
 function gamesShow(req, res) {
-  Game.findById(req.params.id, function(err, game){
+  var id = req.params.id;
+
+  Game.findById({_id: id}, function(err, game){
     if (err) return res.status(404).json({ message: 'Something went wrong. '});
     res.status(200).json(game);
   });
 }
 
-// ).populate('creator').exec(
-
 // New
 function gamesCreate(req, res) {
   var game = new Game(req.body);
-  // game.creator = req.user.id;
+  game.creator = req.user._id; //alternatively delete this line
+  
   game.save(function(err){
     if(err) return res.status(500).json({message: 'Could not save game because ' + err});
     return res.status(200).json(game);
